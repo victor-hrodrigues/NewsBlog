@@ -194,7 +194,6 @@
 				5028FBD6EB498FEE7001ED53 /* Pods-NewsBlogTests.debug.xcconfig */,
 				D641A4D5DBEF25298B14F459 /* Pods-NewsBlogTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -305,7 +304,7 @@
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "NewsBlog" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,

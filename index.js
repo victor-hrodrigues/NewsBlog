@@ -2,8 +2,28 @@
  * @format
  */
 
-import {AppRegistry} from 'react-native';
+import {Navigation} from 'react-native-navigation';
 import App from './App';
-import {name as appName} from './app.json';
+import DetailPage from './UI/DetailPage';
 
-AppRegistry.registerComponent(appName, () => App);
+Navigation.registerComponent('navigation.NewsBlog.HomeScreen', () => App);
+Navigation.registerComponent(
+  'navigation.NewsBlog.DetailScreen',
+  () => DetailPage,
+);
+
+Navigation.events().registerAppLaunchedListener(() => {
+  Navigation.setRoot({
+    root: {
+      stack: {
+        children: [
+          {
+            component: {
+              name: 'navigation.NewsBlog.HomeScreen',
+            },
+          },
+        ],
+      },
+    },
+  });
+});

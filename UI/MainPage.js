@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, SafeAreaView, StyleSheet} from 'react-native';
+import {View, SafeAreaView, StyleSheet, ActivityIndicator} from 'react-native';
 import PostList from './Components/PostList';
 
 export default class MainPage extends Component {
@@ -10,7 +10,7 @@ export default class MainPage extends Component {
 
   componentDidMount() {
     return fetch(
-      'https://newsapi.org/v2/top-headlines?country=us&apiKey=182f1afa57654f4bae6bb4db84907699',
+      'https://newsapi.org/v2/top-headlines?country=br&apiKey=182f1afa57654f4bae6bb4db84907699',
     )
       .then(response => response.json())
       .then(responseJson => {
@@ -28,6 +28,13 @@ export default class MainPage extends Component {
   }
 
   render() {
+    if (this.state.isLoading) {
+      return (
+        <View style={styles.activityIndicatorView}>
+          <ActivityIndicator />
+        </View>
+      );
+    }
     return (
       <SafeAreaView style={styles.mainSafeAreaView}>
         <View>
@@ -40,6 +47,12 @@ export default class MainPage extends Component {
 
 const styles = StyleSheet.create({
   mainSafeAreaView: {
+    flex: 1,
+    backgroundColor: '#F6F6F6',
+  },
+  activityIndicatorView: {
+    flex: 1,
     backgroundColor: '#C3C3C3',
+    padding: 20,
   },
 });

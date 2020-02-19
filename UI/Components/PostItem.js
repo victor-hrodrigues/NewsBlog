@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     padding: 20,
-    backgroundColor: '#C3C3C3',
+    backgroundColor: '#F6F6F6',
   },
   horizontalView: {
     flex: 1,
@@ -35,20 +35,21 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   textTitle: {
+    flex: 1,
     fontSize: 20,
     color: '#222222',
     fontWeight: 'bold',
     textAlign: 'left',
   },
   textDescription: {
+    flex: 2,
     fontSize: 16,
     color: '#424242',
     textAlign: 'left',
   },
   postImage: {
-    width: 100,
-    height: 100,
-    resizeMode: 'center',
+    flex: 1,
+    resizeMode: 'cover',
     marginRight: 10,
   },
 });
