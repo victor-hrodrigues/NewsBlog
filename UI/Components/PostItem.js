@@ -1,21 +1,23 @@
 import React, {Component} from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
 
 export default class PostItem extends Component {
   render() {
     return (
-      <View style={styles.mainView}>
-        <Text style={styles.textTitle}>{this.props.blogPost.title}</Text>
-        <View style={styles.horizontalView}>
-          <Image
-            source={{uri: this.props.blogPost.urlToImage}}
-            style={styles.postImage}
-          />
-          <Text style={styles.textDescription}>
-            {this.props.blogPost.description}
-          </Text>
+      <TouchableOpacity>
+        <View style={styles.mainView}>
+          <Text style={styles.textTitle}>{this.props.blogPost.title}</Text>
+          <View style={styles.horizontalView}>
+            <Image
+              source={{uri: this.props.blogPost.urlToImage}}
+              style={styles.postImage}
+            />
+            <Text style={styles.textDescription}>
+              {this.props.blogPost.description}
+            </Text>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
