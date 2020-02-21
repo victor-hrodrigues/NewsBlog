@@ -1,24 +1,29 @@
 import React, {Component} from 'react';
-import {View, Text, Image, StyleSheet, Link} from 'react-native';
+import {View, Text, Image, StyleSheet} from 'react-native';
 
 export default class PostDetail extends Component {
   render() {
+    if (this.props.blogPost !== null) {
+      let blogArticle = this.props.blogArticle;
+      this.setState({blogPost: blogArticle}, function() {});
+    }
+
     return (
       <View style={styles.mainView}>
-        <Text style={styles.textTitle}>{this.props.blogPost.title}</Text>
+        <Text style={styles.textTitle}>{this.state.blogPost.title}</Text>
         <Text style={styles.textLeftSmall}>
-          Fonte: {this.props.blogPost.source.name + this.props.blogPost.author}
+          Fonte: {this.state.blogPost.source.name + this.state.blogPost.author}
         </Text>
         <Text style={styles.textLeftSmall}>
           Link da notícia:
-          <Link href={this.props.blogPost.source.url} />
+          <Text style={styles.textLink}>{this.state.blogPost.source.url}></Text>
         </Text>
         <Image
-          source={{uri: this.props.blogPost.urlToImage}}
+          source={{uri: this.state.blogPost.urlToImage}}
           style={styles.postImage}
         />
         <Text style={styles.textDescription}>
-          {this.props.blogPost.content}
+          {this.state.blogPost.content}
         </Text>
       </View>
     );
