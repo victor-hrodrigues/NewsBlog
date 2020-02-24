@@ -12,9 +12,7 @@ class MainPage extends Component {
   render() {
     return (
       <SafeAreaView style={styles.mainSafeAreaView}>
-        <View>
-          <PostList blogPosts={this.props.blogPosts} />
-        </View>
+        <PostList blogPosts={this.props.blogPosts} />
       </SafeAreaView>
     );
   }
@@ -29,6 +27,9 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, { fetchArticleList })(MainPage);
 
 const styles = StyleSheet.create({
+  mainView: {
+    flex: 1,
+  },
   mainSafeAreaView: {
     flex: 1,
     backgroundColor: '#F6F6F6',
