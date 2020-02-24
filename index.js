@@ -1,18 +1,28 @@
-import App from './App';
+import { Provider } from 'react-redux';
+import { BlogDataStore } from './Redux/Blog.dataStore';
+import { Navigation } from 'react-native-navigation';
+import MainPage from './UI/MainPage';
 import DetailPage from './UI/DetailPage';
-import {Navigation} from 'react-native-navigation';
 
-Navigation.registerComponent('HomeScreen', () => App);
-Navigation.registerComponent('DetailScreen', () => DetailPage);
+Navigation.registerComponentWithRedux('NewsBlog.Home', () => MainPage, Provider, BlogDataStore);
+Navigation.registerComponentWithRedux('NewsBlog.Detail', () => DetailPage, Provider, BlogDataStore);
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
       stack: {
+        id: 'NewsBlog',
         children: [
           {
             component: {
-              name: 'HomeScreen',
+              name: 'NewsBlog.Home',
+              options: {
+                topBar: {
+                  title: {
+                    text: 'News Blog'
+                  }
+                }
+              }
             },
           },
         ],

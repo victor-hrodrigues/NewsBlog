@@ -1,58 +1,36 @@
-import React, {Component} from 'react';
-import {View, SafeAreaView, StyleSheet, ActivityIndicator} from 'react-native';
+import React, { Component } from 'react';
+import { View, SafeAreaView, StyleSheet } from 'react-native';
 import PostList from './Components/PostList';
+import { connect } from 'react-redux';
+import { fetchArticleList } from '../Redux/Blog.actions';
 
-export default class MainPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {isLoading: true};
-  }
-
+class MainPage extends Component {
   componentDidMount() {
-    return fetch(
-      'https://newsapi.org/v2/top-headlines?country=br&apiKey=182f1afa57654f4bae6bb4db84907699',
-    )
-      .then(response => response.json())
-      .then(responseJson => {
-        this.setState(
-          {
-            isLoading: false,
-            dataSource: responseJson.articles,
-          },
-          function() {},
-        );
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    this.props.fetchArticleList();
   }
 
   render() {
-    if (this.state.isLoading) {
-      return (
-        <View style={styles.activityIndicatorView}>
-          <ActivityIndicator />
-        </View>
-      );
-    }
     return (
       <SafeAreaView style={styles.mainSafeAreaView}>
         <View>
-          <PostList blogPosts={this.state.dataSource} />
+          <PostList blogPosts={this.props.blogPosts} />
         </View>
       </SafeAreaView>
     );
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    blogPosts: state.posts,
+  };
+}
+
+export default connect(mapStateToProps, { fetchArticleList })(MainPage);
+
 const styles = StyleSheet.create({
   mainSafeAreaView: {
     flex: 1,
     backgroundColor: '#F6F6F6',
-  },
-  activityIndicatorView: {
-    flex: 1,
-    backgroundColor: '#C3C3C3',
-    padding: 20,
-  },
+  }
 });
