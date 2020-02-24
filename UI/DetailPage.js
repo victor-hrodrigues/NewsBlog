@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import PostDetail from './Components/PostDetail';
 import { connect } from 'react-redux';
 
@@ -7,7 +7,7 @@ class DetailPage extends Component {
   render() {
     return (
       <SafeAreaView style={styles.mainSafeAreaView}>
-          <PostDetail blogArticle={this.props.article} />
+        <PostDetail blogArticle={this.props.article} />
       </SafeAreaView>
     );
   }

@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default class PostDetail extends Component {
   render() {
+    console.log(this.props.blogArticle.urlToImage);
     return (
-      <View style={styles.mainView}>
-        <Text style={styles.textTitle}>{this.props.blogArticle.title}</Text>
-        <Text style={styles.textLeftSmall}>
-          Fonte: {this.props.blogArticle.source.name + this.props.blogArticle.author}
-        </Text>
-        <Text style={styles.textLeftSmall}>
-          Link da notícia:
-           <Text style={styles.textLink}>{this.props.blogArticle.source.url}></Text>
-        </Text>
-        <Image
-          source={{ uri: this.props.blogArticle.urlToImage }}
-          style={styles.postImage}
-        />
-        <Text style={styles.textDescription}>
-          {this.props.blogArticle.content}
-        </Text>
-      </View>
+      <ScrollView >
+        <View style={styles.mainView}>
+          <Text style={styles.textTitle}>{this.props.blogArticle.title}</Text>
+          <Text style={styles.textLeftSmall}>
+            Fonte: {this.props.blogArticle.source.name}
+          </Text>
+          <Text style={styles.textLeftSmall}>
+            Link da notícia:
+           <Text style={styles.textLink}>{this.props.blogArticle.source.url}</Text>
+          </Text>
+          <Image
+            source={{ uri: this.props.blogArticle.urlToImage }}
+            style={styles.postImage}
+          />
+          <Text style={styles.textDescription}>
+            {this.props.blogArticle.content}
+          </Text>
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -54,21 +58,25 @@ const styles = StyleSheet.create({
   },
   textLeftSmall: {
     flex: 1,
-    fontSize: 10,
+    fontSize: 12,
     color: '#222222',
     textAlign: 'left',
   },
   textLink: {
     flex: 1,
-    fontSize: 10,
+    fontSize: 12,
     color: '#0000EE',
     textAlign: 'center',
   },
   postImage: {
     flex: 1,
+    alignSelf: 'center',
+    width: Dimensions.get('window').width - 40,
+    minHeight: 200,
+    height: undefined,
     resizeMode: 'cover',
-    marginRight: 10,
-    marginLeft: 10,
+    marginTop: 5,
     marginBottom: 15,
+    backgroundColor: '#646464',
   },
 });

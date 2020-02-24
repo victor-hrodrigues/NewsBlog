@@ -75,7 +75,11 @@ const styles = StyleSheet.create({
   },
   postImage: {
     flex: 1,
+    width: 100,
+    minHeight: 75,
+    height: undefined,
     resizeMode: 'cover',
     marginRight: 10,
+    backgroundColor: 'transparent',
   },
 });
