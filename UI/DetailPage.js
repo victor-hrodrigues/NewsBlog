@@ -15,7 +15,7 @@ class DetailPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    article: state.article,
+    article: state.blog.article,
   };
 }
 
