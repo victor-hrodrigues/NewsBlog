@@ -1,6 +1,8 @@
 # NewsBlog
-Mobile Test Application
+React Native Mobile Application
 
-Mobile application project to show and store JSON data as Blog Posts and Blog Comments from an online source.
+Simple app, showing the latest news, powered by NewsAPI.org
 
-:)
+React Native + React Native Navigation + Redux
+
+:) VHR
